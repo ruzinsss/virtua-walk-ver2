@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Загрузка и выбор фотографий</title>
+    <title>Vrtua walk ver 2</title>
     <link rel="stylesheet" href="pannellum/pannellum.css">
     <link rel="stylesheet" href="main.css">
 </head>
@@ -44,8 +44,9 @@
         ?>
     </select>
 
-    <button onclick="getSelectedPhoto()">Select image</button>
-    <button onclick="showPanorama()">Load image</button>
+    <button onclick="showPanorama(getSelectedPhoto())">Load image</button>
+
+    <button onclick="deletePanorama()">Delete Panorama</button>
 
     <div id="panorama"></div>
 

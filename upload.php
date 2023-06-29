@@ -23,7 +23,7 @@ if(isset($_FILES["fileToUpload"])) {
     if(isset($_POST["submit"])) {
         $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
         if($check !== false) {
-            echo "Файл является изображением - " . $check["mime"] . ".";
+            //echo "Файл является изображением - " . $check["mime"] . ".";
             $uploadOk = 1;
         } else {
             echo "Файл не является изображением.";
@@ -33,7 +33,7 @@ if(isset($_FILES["fileToUpload"])) {
 
     // Проверка, существует ли уже файл с таким именем
     if (file_exists($target_file)) {
-        echo "Файл с таким именем уже существует.";
+        echo "same name";
         $uploadOk = 0;
     }
 
@@ -51,11 +51,11 @@ if(isset($_FILES["fileToUpload"])) {
 
     // Проверка, была ли установлена ошибка
     if ($uploadOk == 0) {
-        echo "Файл не был загружен.";
+        echo "file not saved ";
     } else {
         // Загрузка файла на сервер
         if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
-            echo "Файл ". basename( $_FILES["fileToUpload"]["name"]). " был успешно загружен.";
+            //echo "Файл ". basename( $_FILES["fileToUpload"]["name"]). " был успешно загружен.";
 
             // Сохранение пути файла в базу данных
             $photoName = $_FILES["fileToUpload"]["name"];
@@ -63,7 +63,7 @@ if(isset($_FILES["fileToUpload"])) {
 
             $sql = "INSERT INTO images (name, path) VALUES ('$photoName', '$photoPath')";
             if ($conn->query($sql) === TRUE) {
-                echo "Путь к фотографии успешно сохранен в базе данных.";
+                echo "File saved";
             } else {
                 echo "Ошибка при сохранении пути к фотографии в базе данных: " . $conn->error;
             }
